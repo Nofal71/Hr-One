@@ -61,8 +61,8 @@
     "scripts": {
         "dev:teamsfx": "npm run dev:local",
         "dev:local": "env-cmd -f .env.local vite",
-        "dev:dev": "env-cmd -f .env.dev vite",
-        "build": "env-cmd -f .env.dev vite build",
+        "dev": "vite",
+        "build": "vite build",
         "serve": "vite preview",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
