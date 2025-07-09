@@ -1,0 +1,56 @@
+<html>
+
+<head>
+  <title>Login End Page</title>
+  <meta charset="utf-8" />
+</head>
+
+<body>
+  <script src="https://res.cdn.office.net/teams-js/2.31.1/js/MicrosoftTeams.min.js"
+    integrity="sha384-ihAqYgEJz9hzEU+HaYodG1aTzjebC/wKXQi1nWKZG7OLAUyOL9ZrzD/SfZu79Jeu"
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://alcdn.msauth.net/browser/2.21.0/js/msal-browser.min.js"
+    integrity="sha384-s/NxjjAgw1QgpDhOlVjTceLl4axrp5nqpUbCPOEQy1PqbFit9On6uw2XmEF1eq0s"
+    crossorigin="anonymous"></script>
+  <script type="text/javascript">
+    // const clientId = '36ef5f28-5932-410d-8082-a06cf6cb88b4';
+
+    microsoftTeams.app.initialize().then(() => {
+      microsoftTeams.app.getContext().then(async (context) => {
+        var currentURL = new URL(window.location);
+        var clientId = currentURL.searchParams.get("clientId");
+        const msalConfig = {
+          auth: {
+            clientId: clientId,
+            authority: 'https://login.microsoftonline.com/327b2233-d87f-4538-8f74-c5bb1e12bb42',
+            navigateToLoginRequestUrl: false,
+          },
+          cache: {
+            cacheLocation: "sessionStorage",
+          },
+        };
+
+        const msalInstance = new msal.PublicClientApplication(msalConfig);
+        msalInstance
+          .handleRedirectPromise()
+          .then((tokenResponse) => {
+            if (tokenResponse && tokenResponse.accessToken) {
+              microsoftTeams.authentication.notifySuccess(tokenResponse.accessToken);
+            } else {
+              microsoftTeams.authentication.notifyFailure("No access token received");
+            }
+          })
+          .catch((error) => {
+            console.error("Token Error:", error);
+            microsoftTeams.authentication.notifyFailure(error.message);
+          });
+      }).catch(error => {
+        console.error("Error in Teams context:", error);
+        microsoftTeams.authentication.notifyFailure(error.message);
+      });
+    }).catch(error => {
+      console.error("Error initializing Teams SDK:", error);
+      microsoftTeams.authentication.notifyFailure(error.message);
+    });
+  </script>
+</body>
