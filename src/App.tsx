@@ -41,7 +41,7 @@ export default function App() {
           auth: {
             clientId: authConfig.clientId,
             authority: `https://login.microsoftonline.com/common`,
-            redirectUri: import.meta.env.VITE_TAB_ENDPOINT
+            redirectUri: 'https://white-dune-00f6d0e0f.2.azurestaticapps.net'
           },
           cache: { cacheLocation: "sessionStorage" },
         });
