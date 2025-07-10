@@ -1,6 +1,6 @@
 export const authConfig = {
-  clientId: import.meta.env.VITE_AAD_APP_CLIENT_ID!,
-  initiateLoginEndpoint: `${import.meta.env.VITE_TAB_ENDPOINT}/auth-start.html`,
+  clientId: '36ef5f28-5932-410d-8082-a06cf6cb88b4',
+  initiateLoginEndpoint: `https://white-dune-00f6d0e0f.2.azurestaticapps.net/auth-start.html`,
   authority: "https://login.microsoftonline.com/common",
 };
 
