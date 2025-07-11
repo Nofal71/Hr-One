@@ -40,8 +40,8 @@ export default function App() {
         const msal = new PublicClientApplication({
           auth: {
             clientId: authConfig.clientId,
-            authority: `https://login.microsoftonline.com/common`,
-            redirectUri: 'https://white-dune-00f6d0e0f.2.azurestaticapps.net'
+            authority: `https://login.microsoftonline.com/d6c5be03-e08b-4cee-a1dc-c409911f78a4`,
+            redirectUri: import.meta.env.VITE_TAB_ENDPOINT
           },
           cache: { cacheLocation: "sessionStorage" },
         });

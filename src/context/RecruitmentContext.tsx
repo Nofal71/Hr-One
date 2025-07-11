@@ -44,7 +44,7 @@ export const RecruitmentProvider: React.FC<ProviderProps> = ({ children }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [siteNotCreated, setSiteNotCreated] = useState<string | null>(null);
 
-  const SITE_NAME = "HumanResource";
+  const SITE_NAME = "Recruitment";
   const listNames = ["CvLibrary", "JobPosting", "candidate_stages", "communication_skills" , "Tags"];
   const listTypes: { [key: string]: "documentLibrary" | "generic" } = {
     CvLibrary: "documentLibrary",

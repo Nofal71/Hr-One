@@ -1,7 +1,7 @@
 export const authConfig = {
-  clientId: '36ef5f28-5932-410d-8082-a06cf6cb88b4',
+  clientId: '0b4ba56d-259e-42e8-a649-b489a72672fb',
   initiateLoginEndpoint: `https://white-dune-00f6d0e0f.2.azurestaticapps.net/auth-start.html`,
-  authority: "https://login.microsoftonline.com/common",
+  authority: "https://login.microsoftonline.com/d6c5be03-e08b-4cee-a1dc-c409911f78a4",
 };
 
 export const loginScopes = [
@@ -11,7 +11,4 @@ export const loginScopes = [
   "email",
   "Files.ReadWrite.All",
   "Sites.ReadWrite.All",
-  "Directory.ReadWrite.All",
-  "Group.ReadWrite.All",
-  "Sites.Manage.All"
 ];

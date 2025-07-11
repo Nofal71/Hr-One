@@ -12,7 +12,7 @@ import {
   Tabs,
   Tab,
 } from '@mui/material';
-import { ArrowBack, NoteAdd, Delete } from '@mui/icons-material';
+import { ArrowBack, NoteAdd, Delete, Phone } from '@mui/icons-material';
 import axiosInstance from '../../../axiosInstance';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -121,7 +121,7 @@ const UserProfile: React.FC<UserProfileProps> = ({ onBack }) => {
         communication_skill: response?.data?.fields?.communication_skill ? JSON.parse(response.data.fields.communication_skill as any) : [],
         city: response?.data?.fields?.city,
         source: response?.data?.fields?.source,
-        notes: response?.data?.fields?.notes0 ? JSON.parse(response.data.fields.notes0 as any) : [],
+        notes: response?.data?.fields?.notes ? JSON.parse(response.data.fields.notes as any) : [],
         tags: response?.data?.fields?.tags ? JSON.parse(response.data.fields.tags as any) : [],
         screen_results: response?.data?.fields?.screen_results ? JSON.parse(response.data.fields.screen_results as any) : [],
         screen_status: response?.data?.fields?.screen_status ? JSON.parse(response.data.fields.screen_status as any) : [],
@@ -276,7 +276,7 @@ const UserProfile: React.FC<UserProfileProps> = ({ onBack }) => {
         ];
       }
       await updateListItem(siteId, cvLibraryList.id, id, {
-        fields: { notes0: JSON.stringify(saveNotes) },
+        fields: { notes: JSON.stringify(saveNotes) },
       });
       setNoteModalOpen(false);
       setCurrentNoteText('');
@@ -436,7 +436,7 @@ const UserProfile: React.FC<UserProfileProps> = ({ onBack }) => {
               />
             </Box>
 
-            <Box>
+            <Box sx={{ mb: 3 }}>
               <Typography variant="body2" sx={{ mb: 0.5 }}>
                 City
               </Typography>
@@ -450,6 +450,27 @@ const UserProfile: React.FC<UserProfileProps> = ({ onBack }) => {
                   startAdornment: (
                     <InputAdornment position="start">
                       <LocationCityIcon />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </Box>
+
+              <Box>
+              <Typography variant="body2" sx={{ mb: 0.5 }}>
+                Phone Number
+              </Typography>
+              <TextField
+                fullWidth
+                type='number'
+                defaultValue={data.phone_number || ''}
+                variant="outlined"
+                onChange={(e) => handleChangeValue('phone_number', e.target.value)}
+                size="small"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <Phone />
                     </InputAdornment>
                   ),
                 }}
